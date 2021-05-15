@@ -15,11 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. Write 2-3 sentences about RMarkdown (you can google this information or use resources recommended in class - no need to reference)
 
-**RMarkdown** is an authoring format that allows users to create high quality documents, reports, presentations and dashboards using languages such as R, Python and SQL. 
+**RMarkdown** is an authoring format that allows users to create ***high quality documents, reports, presentations and dashboards*** using languages such as *R, Python and SQL*. 
 
-***RMarkdown*** allows you to create *data stories by narrating the data* written in an easy-to-write plain text format.
+***RMarkdown*** allows you to create *data stories by narrating the data* written in an **easy-to-write** plain text format.
 
-**RMarkdown** documents contain R code that are fully reproducible and can be exported in various formats such as html, pdf or MS Word. **RMarkdown** document in R contains *meta information* which is the header, *chunk of R code* and *mixed formatted text* such headers, bold, italics,  etc.
+**RMarkdown** documents contain *R code* that are fully *reproducible* and can be exported in various formats such as ***html, pdf or MS Word***. **RMarkdown** document in R contains *meta information* which is the header, *chunk of R code* and *mixed formatted text* such headers, bold, italics,  etc.
 
 4. In the above use bold and italics for editing.
 
@@ -34,30 +34,38 @@ https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2
 The name of the variable should be `fastfood`
 
 ```{r}
+#load tidyverse package
 library(tidyverse)
 
+#read the fastfood_calories.csv file and save into variable fastfood
 fastfood<-read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-09-04/fastfood_calories.csv")
 
 ```
 
 7. Display the first 10 rows of the dataset. Use Help to see how you can do this with `head()` function.
 ```{r}
-head(fastfood,10)
+#display the first 10 rows using function head()
+fastfood%>%
+  head(10)
 ```
 
 8. Display the observations that has more than 1000 calories
 ```{r}
+#Display rows that have calories greater than 1000 calories using the function filter()
 fastfood%>%
   filter(calories>1000)
 ```
 
 9. Save observations with more than 40 in total_fat and more than 80 in total_carb in a new variable called `dont_eat_this`
 ```{r}
+#Save rows in variable dont_eat_this for total_fat greater than 40 and total_carb greater than 80 
 dont_eat_this<-fastfood%>%
   filter(total_fat>40 & total_carb>80)
 ```
 
 10. Using the initial dataset variable, display observations from restaurant Mcdonalds
 ```{r}
-fastfood%>%filter(restaurant=="Mcdonalds")
+#display rows that have Mcdonalds as restaurant
+fastfood%>%
+  filter(restaurant=="Mcdonalds")
 ```
